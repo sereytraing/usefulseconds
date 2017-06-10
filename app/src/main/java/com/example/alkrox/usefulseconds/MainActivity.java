@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements  RewardedVideoAdL
     private void startRewardedVideo() {
         if (mAd.isLoaded()) {
             mAd.show();
+        } else {
+            Toast.makeText(this, "Vidéo pas encore chargée", Toast.LENGTH_SHORT).show();
         }
     }
 
