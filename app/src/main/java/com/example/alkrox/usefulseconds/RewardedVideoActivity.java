@@ -11,6 +11,8 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 public class RewardedVideoActivity extends AppCompatActivity implements  RewardedVideoAdListener{
 
@@ -19,12 +21,18 @@ public class RewardedVideoActivity extends AppCompatActivity implements  Rewarde
     //ca-app-pub-3940256099942544/5224354917 GOOGLE TEST
     //ca-app-pub-7274580795432430/1564901102 LE NOTRE
     private RewardedVideoAd mAd;
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_rewarded_video);
         MobileAds.initialize(this, APP_ID);
+
+        mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         Button button_ad_rewarded_video = (Button) findViewById(R.id.button_ad_reward_video);
         button_ad_rewarded_video.setOnClickListener(new View.OnClickListener() {
