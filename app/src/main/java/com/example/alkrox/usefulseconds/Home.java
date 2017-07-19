@@ -8,6 +8,9 @@ import android.widget.Button;
 
 public class Home extends AppCompatActivity {
 
+    Association association1 = new Association(1, "Croix rouge", "humanitaire", 2);
+    AssociationDatabse associationDatabse = new AssociationDatabse(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,13 @@ public class Home extends AppCompatActivity {
                 showInterstitialActivity();
             }
         });
+
+        associationDatabse.addAssociation(association1);
+
+        Association tmp = associationDatabse.getAssociation(1);
+        System.out.println(tmp.getName());
+
+
     }
 
     private void showRewardedVideoActivity() {
