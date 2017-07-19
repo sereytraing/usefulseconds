@@ -135,7 +135,7 @@ public class AssociationDatabase extends SQLiteOpenHelper{
     }
 
     // Supprimer une assoc
-    public void deleteEnfant(Association association) {
+    public void deleteAssociation(Association association) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(ASSOC_TABLE_NAME, ASSOC_KEY_ID + " = ?",
                 new String[]{String.valueOf(association.getId())});

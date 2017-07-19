@@ -1,9 +1,11 @@
 package com.example.alkrox.usefulseconds;
 
+import android.content.Intent;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -48,6 +50,17 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         this.refreshListView("humanitaire");
+
+
+        listView.setClickable(true);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                Intent intent = new Intent(HomeActivity.this, RewardedVideoActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void refreshListView(String category) {
