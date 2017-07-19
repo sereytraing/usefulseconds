@@ -8,8 +8,8 @@ import android.widget.Button;
 
 public class Home extends AppCompatActivity {
 
-    Association association1 = new Association(1, "Croix rouge", "humanitaire", 2);
-    AssociationDatabse associationDatabse = new AssociationDatabse(this);
+    Association association1 = new Association("Croix rouge", "humanitaire", 2);
+    AssociationDatabase associationDatabase = new AssociationDatabase(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +40,9 @@ public class Home extends AppCompatActivity {
             }
         });
 
-        associationDatabse.addAssociation(association1);
+        associationDatabase.addAssociation(association1);
 
-        Association tmp = associationDatabse.getAssociation(1);
+        Association tmp = associationDatabase.getAssociation(1);
         System.out.println(tmp.getName());
 
 

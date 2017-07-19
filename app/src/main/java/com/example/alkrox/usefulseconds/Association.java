@@ -17,6 +17,13 @@ public class Association {
         this.money = money;
     }
 
+    public Association(String name, String category, int money) {
+        this.id = id;
+        this.name = name;
+        this.catetory = category;
+        this.money = money;
+    }
+
     public int getId() {
         return id;
     }

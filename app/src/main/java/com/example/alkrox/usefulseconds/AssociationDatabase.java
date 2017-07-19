@@ -13,7 +13,7 @@ import java.util.List;
  * Created by AlkRox on 19/07/2017.
  */
 
-public class AssociationDatabse extends SQLiteOpenHelper{
+public class AssociationDatabase extends SQLiteOpenHelper{
     public static final String ASSOC_KEY_ID = "id";
     public static final String ASSOC_NAME = "name";
     public static final String ASSOC_CATEGORY = "category";
@@ -30,7 +30,7 @@ public class AssociationDatabse extends SQLiteOpenHelper{
                     ");";
 
 
-    public AssociationDatabse(Context context) {
+    public AssociationDatabase(Context context) {
         super(context, ASSOC_TABLE_NAME, null, DATABASE_VERSION);
     }
 
@@ -55,7 +55,6 @@ public class AssociationDatabse extends SQLiteOpenHelper{
         // de la table et la valeur représente le contenu de l'enregistrement dans cette colonne.
         // ContentValues peut être utilisé pour insertions et mises à jour des enregistrements de la base de données.
         ContentValues values = new ContentValues();
-        values.put(ASSOC_KEY_ID, association.getId());
         values.put(ASSOC_NAME, association.getName());
         values.put(ASSOC_CATEGORY, association.getCatetory());
         values.put(ASSOC_MONEY, association.getMoney());

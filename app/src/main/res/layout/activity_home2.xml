@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.alkrox.usefulseconds.HomeActivity">
+
+    <ImageButton
+        android:id="@+id/imageButtonLeft"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        app:srcCompat="@drawable/picto1"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:scaleType="fitCenter"
+        android:background="@null"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="10dp" />
+
+    <ImageButton
+        android:id="@+id/imageButtonCenter"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toRightOf="@+id/imageButtonLeft"
+        app:layout_constraintRight_toLeftOf="@+id/imageButtonRight"
+        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="fitCenter"
+        android:background="@null"
+        app:srcCompat="@drawable/picto2"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <ImageButton
+        android:id="@+id/imageButtonRight"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/picto3"
+        android:layout_marginRight="10dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="fitCenter"
+        android:background="@null"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp" />
+
+    <TextView
+        android:id="@+id/textViewLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="15dp"
+        android:text="Humanitaire"
+        app:layout_constraintLeft_toLeftOf="@+id/imageButtonLeft"
+        app:layout_constraintRight_toRightOf="@+id/imageButtonLeft"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonLeft"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/textViewCenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="15dp"
+        android:text="Environnement"
+        app:layout_constraintLeft_toLeftOf="@+id/imageButtonCenter"
+        app:layout_constraintRight_toRightOf="@+id/imageButtonCenter"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonCenter"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/textViewRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="15dp"
+        android:text="Art et Culture"
+        app:layout_constraintLeft_toLeftOf="@+id/imageButtonRight"
+        app:layout_constraintRight_toRightOf="@+id/imageButtonRight"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonRight"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCenter" />
+
+</android.support.constraint.ConstraintLayout>
