@@ -62,6 +62,11 @@ public class RewardedVideoActivity extends AppCompatActivity implements  Rewarde
         //Toast.makeText(this, "onRewarded! currency: " + reward.getType() + "  amount: " +
         //       reward.getAmount(), Toast.LENGTH_SHORT).show();
         // Reward the user.
+        if (isCategoryClicked) {
+            Toast.makeText(this, "Merci ! Vous venez d'offrir " + (float)2/numberOfAssoc +"e à ces associations !", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Merci ! Vous venez d'offrir 2e à l'association !", Toast.LENGTH_LONG).show();
+        }
         this.finish();
     }
 
@@ -74,11 +79,7 @@ public class RewardedVideoActivity extends AppCompatActivity implements  Rewarde
 
     @Override
     public void onRewardedVideoAdClosed() {
-        if (isCategoryClicked) {
-            Toast.makeText(this, "Merci ! Vous venez d'offrir " + (float)2/numberOfAssoc +"e à ces associations !", Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(this, "Merci ! Vous venez d'offrir 2e à l'association !", Toast.LENGTH_LONG).show();
-        }
+        this.finish();
     }
 
     @Override
