@@ -17,8 +17,16 @@ import java.util.List;
 public class HomeActivity extends AppCompatActivity {
 
     AssociationDatabase associationDatabase = new AssociationDatabase(this);
-
+    public static final String ENVIRONNEMENT = "environnement";
+    public static final String HUMANITAIRE = "humanitaire";
+    public static final String ARTCULTURE = "artculture";
     ListView listView;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //this.addDataInDatabase();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +37,18 @@ public class HomeActivity extends AppCompatActivity {
         leftButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                refreshListView("humanitaire");
+                refreshListView(HUMANITAIRE);
+            }
+        });
+        leftButton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                int nb = getNumberOfAssoc(HUMANITAIRE);
+                Intent intent = new Intent(HomeActivity.this, RewardedVideoActivity.class);
+                intent.putExtra("numberAssociation", nb);
+                intent.putExtra("isCategoryClicked", true);
+                startActivity(intent);
+                return true;
             }
         });
 
@@ -37,20 +56,43 @@ public class HomeActivity extends AppCompatActivity {
         centerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                refreshListView("environnement");
+                refreshListView(ENVIRONNEMENT);
             }
         });
+        centerButton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                int nb = getNumberOfAssoc(ENVIRONNEMENT);
+                Intent intent = new Intent(HomeActivity.this, RewardedVideoActivity.class);
+                intent.putExtra("numberAssociation", nb);
+                intent.putExtra("isCategoryClicked", true);
+                startActivity(intent);
+                return true;
+            }
+        });
+
 
         ImageButton rightButton = (ImageButton) findViewById(R.id.imageButtonRight);
         rightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                refreshListView("artculture");
+                refreshListView(ARTCULTURE);
             }
         });
 
-        this.refreshListView("humanitaire");
+        rightButton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                int nb = getNumberOfAssoc(ARTCULTURE);
+                Intent intent = new Intent(HomeActivity.this, RewardedVideoActivity.class);
+                intent.putExtra("numberAssociation", nb);
+                intent.putExtra("isCategoryClicked", true);
+                startActivity(intent);
+                return true;
+            }
+        });
 
+        this.refreshListView(HUMANITAIRE);
 
         listView.setClickable(true);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -71,5 +113,31 @@ public class HomeActivity extends AppCompatActivity {
         }
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(HomeActivity.this, android.R.layout.simple_list_item_1, tabName);
         listView.setAdapter(adapter);
+    }
+
+    public int getNumberOfAssoc(String category) {
+        List<Association> listeAssociation = associationDatabase.getAssocInCategory(category);
+        String tabName[] = new String[listeAssociation.size()];
+        for(int i = 0; i < listeAssociation.size(); i++) {
+            tabName[i] = listeAssociation.get(i).getName();
+        }
+        return tabName.length;
+    }
+
+    private void addDataInDatabase() {
+        Association association1 = new Association("LA CROIX ROUGE FRANÇAISE", HUMANITAIRE, 2);
+        Association association2 = new Association("MÉDECINS SANS FRONTIÈRES", HUMANITAIRE, 2);
+        Association association3 = new Association("WWF", ENVIRONNEMENT, 2);
+        Association association4 = new Association("SPA", ENVIRONNEMENT, 2);
+        Association association5 = new Association("UNESCO", ARTCULTURE, 2);
+        Association association6 = new Association("ICCROM", ARTCULTURE, 2);
+
+        associationDatabase.addAssociation(association1);
+        associationDatabase.addAssociation(association2);
+        associationDatabase.addAssociation(association3);
+        associationDatabase.addAssociation(association4);
+        associationDatabase.addAssociation(association5);
+        associationDatabase.addAssociation(association6);
+
     }
 }

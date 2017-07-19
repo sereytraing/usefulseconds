@@ -1,6 +1,7 @@
 package com.example.alkrox.usefulseconds;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -19,6 +20,8 @@ public class RewardedVideoActivity extends AppCompatActivity implements  Rewarde
     // ca-app-pub-4481500732535790/5343239260 LE NOTRE
     private RewardedVideoAd mAd;
     private ProgressDialog progress;
+    public int numberOfAssoc;
+    public Boolean isCategoryClicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,9 @@ public class RewardedVideoActivity extends AppCompatActivity implements  Rewarde
         mAd = MobileAds.getRewardedVideoAdInstance(this);
         mAd.setRewardedVideoAdListener(this);
 
+        Intent intent = getIntent();
+        this.numberOfAssoc = intent.getIntExtra("numberAssociation", 0);
+        this.isCategoryClicked = intent.getBooleanExtra("isCategoryClicked", true);
         loadRewardedVideoAd();
     }
 
@@ -68,7 +74,11 @@ public class RewardedVideoActivity extends AppCompatActivity implements  Rewarde
 
     @Override
     public void onRewardedVideoAdClosed() {
-        Toast.makeText(this, "Merci ! Vous venez d'offrir 2e à l'association !", Toast.LENGTH_LONG).show();
+        if (isCategoryClicked) {
+            Toast.makeText(this, "Merci ! Vous venez d'offrir " + (float)2/numberOfAssoc +"e à ces associations !", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Merci ! Vous venez d'offrir 2e à l'association !", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
