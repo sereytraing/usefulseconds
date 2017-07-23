@@ -12,6 +12,8 @@ import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 
+import java.util.List;
+
 public class RewardedVideoActivity extends AppCompatActivity implements  RewardedVideoAdListener{
 
     public static final String APP_ID = "ca-app-pub-4481500732535790~8436306462";
@@ -37,6 +39,7 @@ public class RewardedVideoActivity extends AppCompatActivity implements  Rewarde
         mAd.setRewardedVideoAdListener(this);
 
         Intent intent = getIntent();
+
         this.numberOfAssoc = intent.getIntExtra("numberAssociation", 0);
         this.isCategoryClicked = intent.getBooleanExtra("isCategoryClicked", true);
         this.title = intent.getStringExtra("title");
@@ -108,4 +111,5 @@ public class RewardedVideoActivity extends AppCompatActivity implements  Rewarde
     public void onRewardedVideoStarted() {
         //Toast.makeText(this, "onRewardedVideoStarted", Toast.LENGTH_SHORT).show();
     }
+
 }
