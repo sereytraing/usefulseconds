@@ -117,6 +117,23 @@ public class AssociationDatabase extends SQLiteOpenHelper{
         return associationList;
     }
 
+    public int getDatabaseSize()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        //On fait la requete avec le nom mis en parametre
+        Cursor cursor = db.rawQuery("select * from "+ASSOC_TABLE_NAME , null);
+
+        int counter = 0;
+        if (cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
+
+                counter++;
+                cursor.moveToNext();
+            }
+        }
+        return counter;
+    }
+
     public int updateAssociation(Association association) {
         SQLiteDatabase db = this.getWritableDatabase();
 

@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -25,7 +26,9 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        //this.addDataInDatabase();
+        if(associationDatabase.getDatabaseSize() == 0){
+            this.addDataInDatabase();
+        }
     }
 
     @Override
