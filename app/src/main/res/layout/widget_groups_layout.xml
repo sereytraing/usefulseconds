@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:layout_editor_absoluteX="8dp"
+    tools:layout_editor_absoluteY="8dp"
+    tools:context="com.example.alkrox.usefulseconds.HomeActivity">
+
+    <ImageButton
+        android:id="@+id/category1"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/picto1_grey"
+        />
+
+    <ImageView
+        android:id="@+id/separationBar1"
+        android:layout_width="2dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1"
+        android:src="@drawable/separation_bar"/>
+
+    <ImageButton
+        android:id="@+id/category2"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/picto2_grey"
+        />
+
+    <ImageView
+        android:id="@+id/separationBar2"
+        android:layout_width="2dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1"
+        android:src="@drawable/separation_bar" />
+
+    <ImageButton
+        android:id="@+id/category3"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/picto3_grey"
+        />
+</LinearLayout>
