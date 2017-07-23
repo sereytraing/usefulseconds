@@ -102,7 +102,7 @@
         android:layout_marginTop="8dp"
         android:textSize="25sp"
         android:gravity="center"
-        android:text="Maintenir une icône appuyée\npour donner à une catégorie.\n\nAppuyer une fois\npour dérouler la liste des associations"
+        android:text="Maintenir une icône appuyée\npour donner à une catégorie.\n\nOU\n\nAppuyer une fois\npour dérouler la liste des associations"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"

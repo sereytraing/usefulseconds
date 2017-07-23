@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     tools:layout_editor_absoluteX="8dp"
-    tools:layout_editor_absoluteY="8dp"
-    tools:context="com.example.alkrox.usefulseconds.HomeActivity">
+    tools:layout_editor_absoluteY="8dp">
 
     <ImageButton
         android:id="@+id/category1"
