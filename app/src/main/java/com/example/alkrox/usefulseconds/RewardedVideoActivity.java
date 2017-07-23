@@ -16,12 +16,15 @@ public class RewardedVideoActivity extends AppCompatActivity implements  Rewarde
 
     public static final String APP_ID = "ca-app-pub-4481500732535790~8436306462";
     public static final String ANNOUNCE_ID = "ca-app-pub-3940256099942544/5224354917";
+    public static final int MONEY = 2;
+
     //ca-app-pub-3940256099942544/5224354917 GOOGLE TEST
     // ca-app-pub-4481500732535790/5343239260 LE NOTRE
     private RewardedVideoAd mAd;
     private ProgressDialog progress;
     public int numberOfAssoc;
     public Boolean isCategoryClicked = false;
+    public String title = "id";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ public class RewardedVideoActivity extends AppCompatActivity implements  Rewarde
         Intent intent = getIntent();
         this.numberOfAssoc = intent.getIntExtra("numberAssociation", 0);
         this.isCategoryClicked = intent.getBooleanExtra("isCategoryClicked", true);
+        this.title = intent.getStringExtra("title");
         loadRewardedVideoAd();
     }
 
@@ -63,9 +67,9 @@ public class RewardedVideoActivity extends AppCompatActivity implements  Rewarde
         //       reward.getAmount(), Toast.LENGTH_SHORT).show();
         // Reward the user.
         if (isCategoryClicked) {
-            Toast.makeText(this, "Merci ! Vous venez d'offrir " + (float)2/numberOfAssoc +"e à ces associations !", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Merci ! Vous venez de faire un don de " + MONEY + " euros à un fond commun de " + numberOfAssoc + " associations " + this.title + " !", Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(this, "Merci ! Vous venez d'offrir 2e à l'association !", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Merci ! Vous venez de faire un don de " + MONEY + " euros à l'association " + this.title + " !", Toast.LENGTH_LONG).show();
         }
         this.finish();
     }
@@ -85,6 +89,8 @@ public class RewardedVideoActivity extends AppCompatActivity implements  Rewarde
     @Override
     public void onRewardedVideoAdFailedToLoad(int errorCode) {
         Toast.makeText(this, "Erreur de chargement de la vidéo", Toast.LENGTH_SHORT).show();
+        this.finish();
+
     }
 
     @Override
