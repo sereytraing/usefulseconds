@@ -80,8 +80,7 @@ public class RewardedVideoActivity extends AppCompatActivity implements  Rewarde
     // The following listener methods are optional.
     @Override
     public void onRewardedVideoAdLeftApplication() {
-        Toast.makeText(this, "onRewardedVideoAdLeftApplication",
-                Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "onRewardedVideoAdLeftApplication",Toast.LENGTH_SHORT).show();
     }
 
     @Override

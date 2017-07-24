@@ -26,13 +26,13 @@ public class WidgetGroups extends AppWidgetProvider {
         int[] widgetsIds = appWidgetManager.getAppWidgetIds(widget);
         for(int widgetId : widgetsIds){
             RemoteViews views = new RemoteViews(context.getPackageName(),R.layout.widget_groups_layout);
-            views.setOnClickPendingIntent(R.id.category1, this.goToRewardVideo(context, 1, "humanitaires"));
-            views.setOnClickPendingIntent(R.id.category2, this.goToRewardVideo(context, 2, "environnementales"));
-            views.setOnClickPendingIntent(R.id.category3, this.goToRewardVideo(context, 3, "artistiques et culturelles"));
-
+            if(getNumberOfAssoc(context, HomeActivity.CATEGORY1) + getNumberOfAssoc(context, HomeActivity.CATEGORY2) + getNumberOfAssoc(context, HomeActivity.CATEGORY3) != 0){
+                views.setOnClickPendingIntent(R.id.category1, this.goToRewardVideo(context, 1, HomeActivity.CATEGORY1));
+                views.setOnClickPendingIntent(R.id.category2, this.goToRewardVideo(context, 2, HomeActivity.CATEGORY2));
+                views.setOnClickPendingIntent(R.id.category3, this.goToRewardVideo(context, 3, HomeActivity.CATEGORY3));
+            }
             appWidgetManager.updateAppWidget(widgetId, views);
         }
-
     }
     public PendingIntent goToRewardVideo(Context context, int statusCode, String category){
         Intent intent = new Intent(context, RewardedVideoActivity.class);
