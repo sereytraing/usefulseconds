@@ -1,5 +1,7 @@
 package com.example.alkrox.usefulseconds;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,8 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
@@ -29,6 +31,22 @@ public class HomeActivity extends AppCompatActivity {
         if(associationDatabase.getDatabaseSize() == 0){
             this.addDataInDatabase();
         }
+
+        /****** NOTIFICATION IMPLEMENTATION ******/
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.set(Calendar.HOUR_OF_DAY, 8);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.add(Calendar.DATE, 1);
+
+        Intent intent = new Intent(getApplicationContext(), My_Notification.class);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),1000, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        /****** NOTIFICATION IMPLEMENTATION ******/
     }
 
     @Override
@@ -81,8 +99,6 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-
 
         listView.setClickable(true);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
