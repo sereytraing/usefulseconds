@@ -136,7 +136,8 @@ public class AssociationDatabase extends SQLiteOpenHelper{
 
     public void dropTheDatabase(){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.rawQuery("delete from " + ASSOC_TABLE_NAME, null);
+        db.delete(ASSOC_TABLE_NAME, null, null);
+        db.close();
     }
 
     public int updateAssociation(Association association) {

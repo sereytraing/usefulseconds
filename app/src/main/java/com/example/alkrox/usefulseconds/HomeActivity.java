@@ -32,6 +32,12 @@ public class HomeActivity extends AppCompatActivity {
             this.addDataInDatabase();
         }
 
+        /* Utiliser pour vider la database en période de développement
+         * Normalement je sais qu'il faut pas mais je l'ai laissé ici pour montrer qu'on l'utilisait
+         */
+        
+        //associationDatabase.dropTheDatabase();
+
         /****** NOTIFICATION IMPLEMENTATION ******/
         Calendar calendar = Calendar.getInstance();
 

@@ -7,6 +7,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -23,15 +24,17 @@ public class WidgetGroups extends AppWidgetProvider {
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         ComponentName widget = new ComponentName(context, WidgetGroups.class);
-        int[] widgetsIds = appWidgetManager.getAppWidgetIds(widget);
-        for(int widgetId : widgetsIds){
-            RemoteViews views = new RemoteViews(context.getPackageName(),R.layout.widget_groups_layout);
-            if(getNumberOfAssoc(context, HomeActivity.CATEGORY1) + getNumberOfAssoc(context, HomeActivity.CATEGORY2) + getNumberOfAssoc(context, HomeActivity.CATEGORY3) != 0){
+        if(getNumberOfAssoc(context, HomeActivity.CATEGORY1) + getNumberOfAssoc(context, HomeActivity.CATEGORY2) + getNumberOfAssoc(context, HomeActivity.CATEGORY3) == 0) {
+            Toast.makeText(context, "Lancer l'application une première fois puis remplacer le Widget pour qu'il soit fonctionnel", Toast.LENGTH_LONG).show();
+        } else {
+            int[] widgetsIds = appWidgetManager.getAppWidgetIds(widget);
+            for(int widgetId : widgetsIds){
+                RemoteViews views = new RemoteViews(context.getPackageName(),R.layout.widget_groups_layout);
                 views.setOnClickPendingIntent(R.id.category1, this.goToRewardVideo(context, 1, HomeActivity.CATEGORY1));
                 views.setOnClickPendingIntent(R.id.category2, this.goToRewardVideo(context, 2, HomeActivity.CATEGORY2));
                 views.setOnClickPendingIntent(R.id.category3, this.goToRewardVideo(context, 3, HomeActivity.CATEGORY3));
+                appWidgetManager.updateAppWidget(widgetId, views);
             }
-            appWidgetManager.updateAppWidget(widgetId, views);
         }
     }
     public PendingIntent goToRewardVideo(Context context, int statusCode, String category){
